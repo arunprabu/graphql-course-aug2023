@@ -1,0 +1,38 @@
+Casing Types
+---
+  1. PascalCase 
+      * recommended for classes and file names of classes and interfaces 
+      examples: Car, CarDetails, UserMap, AddUserComponent
+  2. camelCase 
+      * recommended for variables, let, const, fn, methods 
+      examples: 
+        var myApp = 'Phone Book';
+
+        function getData(){
+        }
+
+        getDeviceOrientation(){
+        }
+
+  3. kebab-case 
+      * recommended for file names, folder names
+
+      examples: 
+        app-routing.js 
+        employee-list.js 
+
+  4. snake_case 
+      * not recommended
+      * recommended for consts (if your architect agrees)
+
+      examples:
+        const MAX_STUDENTS_PER_CLASS = 30; 
+
+
+Exercise No#1
+----
+  Not completed
+    Tarun Bikas
+    Vignesh Kanna 
+
+=======

@@ -1,0 +1,22 @@
+Http Methods
+----
+  GET, POST, PUT, PATCH, DELETE 
+
+CRUD App 
+-----
+  1. add an employee (CREATE)
+      Http Method: POST 
+
+  2. list employees (READ)
+      Http Method: GET 
+
+  3. fetch employee details (READ)
+      Http Method: GET 
+
+  4. update employee (UPDATE)
+      Http Method: PUT / PATCH
+
+  5. delete employee (DELETE)
+      Http Method: DELETE 
+
+
