@@ -24,7 +24,7 @@ http.createServer((req, res) => {
 
   res.writeHead(200, { "Content-Type": "text/html" });
   switch (req.url) {
-    case "/":
+    case "/": // SSR
       res.write(`
         <html>
           <head>
@@ -40,7 +40,7 @@ http.createServer((req, res) => {
       `);
       break;
 
-    case "/about":
+    case "/about": // SSR
       res.write(`
         <html>
           <head>
@@ -56,7 +56,7 @@ http.createServer((req, res) => {
       `);
       break;
 
-    case "/contact":
+    case "/contact": // SSR
       res.write(`
         <html>
           <head>
@@ -71,8 +71,8 @@ http.createServer((req, res) => {
         </html>
       `);
       break;
-    
-    case '/users':
+
+    case "/users": // REST API Endpoint
       res.writeHead(200, { "Content-Type": "application/json" });
       const userList = [
         {
@@ -86,7 +86,7 @@ http.createServer((req, res) => {
           name: "Steve",
           phone: 867543564,
           email: "s@t.com",
-        }
+        },
       ];
       res.write(JSON.stringify(userList));
       break;

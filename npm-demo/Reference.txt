@@ -1,0 +1,43 @@
+NPM 
+====
+  1. Project Dependency 
+      * needed for app's functionality to work
+      * examples: dropzone, bootstrap, jquery
+
+      commands:
+      -----
+        npm i dropzone 
+        npm install dropzone 
+        npm install --save dropzone 
+        npm i dropzone -S 
+        npm i -S dropzone
+
+       "dependencies": {
+          "dropzone": "^6.0.0-beta.2"
+        }
+
+
+  2. Development Dependency
+      * needed just for the app to be development 
+      * examples: typescript, webpack
+
+      commands: 
+      -------
+        npm i --save-dev typescript 
+        npm i typescript --save-dev
+        npm i -D typescript 
+        npm i typescript -D
+
+      "devDependencies": {
+        "typescript": "^5.1.6"
+      }
+
+====
+npm uninstall webpack -D 
+npm update webpack -D 
+TODO: npm prune 
+========================
+
+npm alternatives: 
+-----------
+  yarn, pnpm 
