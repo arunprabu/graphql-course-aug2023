@@ -105,7 +105,7 @@ app.get('/users', (req, res) => {
 // handling post requet on '/users'
 app.post('/users', (req, res) => {
   console.log('RECEIVING POST REQ');
-  // console.log(req.body); // this needs body-parser 
+  console.log(req.body); // this needs body-parser 
   res.json({
     message: 'Saved Successfully'
   });
