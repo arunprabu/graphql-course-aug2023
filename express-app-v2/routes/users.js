@@ -8,7 +8,7 @@ var router = express.Router();
 // update user [DONE]
 // delete user [TODO]
 
-/* GET users. */
+/* GET users/. */
 router.get('/', (req, res, next) => {
   // connect to the db
   // exec a query to fetch users from db
@@ -31,7 +31,7 @@ router.get('/', (req, res, next) => {
   res.json(users);
 });
 
-// POST users 
+// POST users/ 
 router.post('/', (req, res, next) => {
   // req body will carry the form data from the front end
   console.log(req.body);
@@ -48,7 +48,7 @@ router.post('/', (req, res, next) => {
   });
 });
 
-// GET -- user with userId -- URL Param
+// GET -- users/1 (with userId) -- URL Param
 router.get('/:userId', (req, res, next) => {
   console.log(req.params.userId); // URL Param
   res.json({
@@ -59,7 +59,7 @@ router.get('/:userId', (req, res, next) => {
   });
 });
 
-// PUT user with userId -- URL Param
+// PUT users/1 (with userId) -- URL Param
 router.put('/:userId', (req, res, next) => {
   // read url param 
   console.log(req.params.userId);
@@ -72,6 +72,8 @@ router.put('/:userId', (req, res, next) => {
   });
 });
 
+// TODO: learn about PATCH Method
+// learn about the diff b/w PUT and PATCH 
 // TODO: DELETE user with userId
 
 module.exports = router;

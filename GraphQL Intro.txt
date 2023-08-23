@@ -1,0 +1,210 @@
+GraphQL
+--------
+  Problems in REST API
+  ---------------------
+    1. Overfetching the data from REST API 
+    2. Underfetching the data from REST API
+    3. Exposing many API endpoints to Front ends 
+    4. Sharing the REST API documentation to the Front End Developers
+  
+===================
+REST API 
+----
+  Server App
+  Client: 
+    Shell Client: cmd prompt
+    Desktop Clients: Browser, Postman,
+    Programming Clients: Angular (http client), React (fetch / axios), vuejs, js apps, svelte
+
+  ---------
+
+
+
+GraphQL 
+-----
+  Server 
+  Client
+    Shell Client: ...? 
+    Web Client: graphiql
+    Desktop Clients: Postman, Altair GraphQL Client
+    Programming Clients: Apollo Client, Facebook Relay in Angular/React/VueJS Apps
+
+
+================
+GraphQL Apps
+-------------
+  1. Server Side Apps by 3 different approaches
+      1.1 GraphQL Server app in NodeJS 
+      1.2 GraphQL Server app with expressJS + official graphql (TO LEARN in a day or 2)
+        1.2.1 using buildSchema approach 
+        1.2.2 using GraphQLSchema approach 
+      1.3 GraphQL Server App with expressJS + Apollo Server (TO LEARN)
+  
+  2. Client Side App
+      Angular/React/VueJS/Svelte App with either Apollo client or Facebook Relay
+
+      What we will develop:
+        React App with Apollo Client (TO LEARN)
+
+
+  
+On the Server side 
+===========
+
+#1 Running GraphQL in a Node.js environment
+    https://graphql.org/graphql-js/
+
+#2 GraphQL API server over an Express webserver. 
+    https://graphql.org/graphql-js/running-an-express-graphql-server/
+
+#3 GraphQL server packages from Apollo that work with 
+    various Node.js HTTP frameworks like Express 
+    https://www.apollographql.com/docs/apollo-server/
+
+
+On the client Side 
+================
+#1 Using Apollo Client  (We will have demo of this one only)
+    A powerful JavaScript GraphQL client, designed to work well with React, 
+    React Native, Angular 2, or just plain JavaScript.
+    http://apollographql.com/client/ 
+
+#2 Using Facebook Relay ( You learn this separately)
+    Facebook's framework for building React applications that 
+    talk to a GraphQL backend.
+    https://facebook.github.io/relay/
+
+    
+=============
+
+GraphQL 
+-------
+  * In GraphQL everything is strongly-typed
+
+Schema
+======
+  * Combination of Query and Mutation
+
+  Types that the Schema can include are,
+  1. Scalar Types 
+        Similar to Primitive Types 
+        Examples: Int, Float, String, Boolean, ID (Unique Identifier)
+
+          Int: A signed 32‐bit integer.
+          Float: A signed double-precision floating-point value.
+          String: A UTF‐8 character sequence.
+          Boolean: true or false .
+          ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache.
+
+  2. Object Types 
+        * Similar to your own Data Types in TS
+        * Will contain collection of fields a.k.a properties
+        * Each field / property can be of Scalar Type or another Object Type 
+
+        Examples: 
+        --------
+          type Author{
+            id: ID,
+            name: String,
+            penName: String,
+            booksWritten: Int,
+            bio: String
+          }
+
+          type Book{
+            title: String,
+            genre: String,
+            author: Author
+          }
+        
+  3. Query Types
+      * Used for READ operations in GraphQL 
+      * it defines what GraphQL READ operation executes against your data graph
+      * the return type can be of Scalar Types or Object Types
+      
+      Examples
+      --------
+      type Query{
+        hello: String, // hello is field / property and String is the return type
+        age: Int,
+        greet(name: String): String,
+        getUserByUserId(id: String): User
+      }
+
+      // From the GraphQL client -- you can structure the queries like the following 
+      {
+        hello,
+        age,
+        greet(name: "John"),
+        getUserByUserId(id: "1")
+      }
+
+      // Returned value will be like the following  -- in the form of JSON
+      {
+        "data": {
+          "hello": "Hi",
+          "age": 20,
+          "greet": "Good Morning, John!"
+        }
+      }
+
+  4. Mutation Types 
+    * For CREATE, UPDATE, DELETE Operations in GraphQL
+
+    Examples: 
+    -------
+      type Mutation{
+        addAuthor(name: String, penName: String, booksWritten: Int, bio: string): Author, 
+                // return type of the above is Object Type (custom type)
+        updateUserById(id: String): User,
+        deleteUserById(id: String): Status
+      }
+
+      // From the GraphQL client -- you can structure the Mutations like the following 
+      mutation {
+        addAuthor(name: "Arun", penName: "Arun", booksWritten: 5, bio: "lorem ipsum..."){
+          // you can specify needed fields
+          id
+        },
+        updateUserById(id: "1"){
+          name,
+          city
+        }
+      }
+
+      // Returned value will be like the following  -- in the form of JSON
+      {
+        "data": {
+          addAuthor: {
+            id: 13245
+          },
+          updateUserById: {
+            name: "Steve",
+            city: "London"
+          }
+        }
+      }
+
+  5. Input Types 
+      * Instead of passing many arguments in the above one, 
+        we can make a custom type called input type for it 
+      * it will cleaner and optimized
+
+      Examples: 
+      ------
+        type Mutation {
+          addAuthor(AuthorInput): Author
+        }
+
+        input AuthorInput{ // this must be defined with Input suffix -- otherwise it will be confusing with custom type
+          name: String, 
+          penName: String, 
+          booksWritten: Int, 
+          bio: string
+        }
+
+=================================
+
+
+
+
