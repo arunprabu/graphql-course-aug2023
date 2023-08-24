@@ -87,14 +87,14 @@ Schema
 
   Types that the Schema can include are,
   1. Scalar Types 
-        Similar to Primitive Types 
-        Examples: Int, Float, String, Boolean, ID (Unique Identifier)
+      Similar to Primitive Types 
+      Examples: Int, Float, String, Boolean, ID (Unique Identifier)
 
-          Int: A signed 32‐bit integer.
-          Float: A signed double-precision floating-point value.
-          String: A UTF‐8 character sequence.
-          Boolean: true or false .
-          ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache.
+        Int: A signed 32‐bit integer.
+        Float: A signed double-precision floating-point value.
+        String: A UTF‐8 character sequence.
+        Boolean: true or false .
+        ID: The ID scalar type represents a unique identifier, often used to refetch an object or as the key for a cache.
 
   2. Object Types 
         * Similar to your own Data Types in TS
@@ -156,7 +156,7 @@ Schema
       type Mutation{
         addAuthor(name: String, penName: String, booksWritten: Int, bio: string): Author, 
                 // return type of the above is Object Type (custom type)
-        updateUserById(id: String): User,
+        updateUserById(id: String, user: User): User,
         deleteUserById(id: String): Status
       }
 
@@ -166,7 +166,7 @@ Schema
           // you can specify needed fields
           id
         },
-        updateUserById(id: "1"){
+        updateUserById(id: "1", user: { }){
           name,
           city
         }
@@ -188,7 +188,7 @@ Schema
   5. Input Types 
       * Instead of passing many arguments in the above one, 
         we can make a custom type called input type for it 
-      * it will cleaner and optimized
+      * it will be cleaner and optimized
 
       Examples: 
       ------
