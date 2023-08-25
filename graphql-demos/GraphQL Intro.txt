@@ -126,17 +126,11 @@ Schema
       --------
       type Query{
         hello: String, // hello is field / property and String is the return type
-        age: Int,
-        greet(name: String): String,
-        getUserByUserId(id: String): User
       }
 
       // From the GraphQL client -- you can structure the queries like the following 
       {
-        hello,
-        age,
-        greet(name: "John"),
-        getUserByUserId(id: "1")
+        hello
       }
 
       // Returned value will be like the following  -- in the form of JSON

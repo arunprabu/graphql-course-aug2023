@@ -4,10 +4,10 @@
 // Approach #1: Using buildSchema method from graphql package
 
 // We need express to run a server -- npm i express
-const express = require('express'); 
+const express = require("express");
 // we need express-graphql to run a graphql server
-const { graphqlHTTP } = require('express-graphql'); // npm i express-graphql
-const { buildSchema } = require('graphql'); // npm i graphql
+const { graphqlHTTP } = require("express-graphql"); // npm i express-graphql
+const { buildSchema } = require("graphql"); // npm i graphql
 
 // We need to create express app
 const app = express();
@@ -20,19 +20,43 @@ const PORT = 3005;
 const schema = buildSchema(`
   """ Here starts Schema Defn Language """
   type Query {
-    hello: String
+    hello: String,
+    age: Int,
+    quoteOfTheDay: String,
+    greet(name: String): String,
+    favoriteMovies: [String]
   }
 `);
 
-// in order handle the queries from front end, we need to create resolver
-// resolver is nothing but a function that returns data for a field
-// resolver function should have same name as field name
+// Let's have the resolver for all our queries // Let's have the resolve
 const root = {
-  // here's the resolver function for hello field
+  // Here is the resolver function for hello query
   hello: () => {
-    // return the data for hello field
-    return 'Hello World!';
-  }
+    // Here you can execute db queries, rest api calls, etc
+    return "Hello World!";
+  },
+  // Here is the resolver function for age query
+  age: () => {
+    return 20;
+  },
+  // Here is the resolver function for quoteOfTheDay query
+  quoteOfTheDay: () => {
+    return Math.random() < 0.5 ? "Take it easy" : "Be Happy";
+  },
+  // Here is the resolver function for greet query
+  greet: (args) => {
+    console.log(args);
+    return `Hey ${args.name}!, Good Morning!`;
+  },
+  // Here is the resolver function for favoriteMovies query
+  favoriteMovies: () => {
+    return [
+      "Avengers",
+      "The Godfather",
+      "The Dark Knight",
+      "The Shawshank Redemption",
+    ];
+  },
 };
 
 // the only api endpoint front end should hit is /graphql
@@ -47,8 +71,7 @@ app.use(
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}. 
-  Open http://localhost:${PORT}/graphql to run queries.`);
+    Open http://localhost:${PORT}/graphql to run queries.`);
 });
 
 // Now, We need to start the server -- node graphql-server-demo-v1.js
-
