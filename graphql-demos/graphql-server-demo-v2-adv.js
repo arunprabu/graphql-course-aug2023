@@ -1,7 +1,6 @@
+// Approach #1: Using buildSchema method from graphql package
 // Let's learn about building schema for Graphql server
 // along with setting up graphiql client tool to test our graphql server
-
-// Approach #1: Using buildSchema method from graphql package
 
 // We need express to run a server -- npm i express
 const express = require("express");
@@ -38,7 +37,9 @@ const schema = buildSchema(`
   }
 
   type Mutation {
-    createUser(name: String, email: String, phone: String): User!
+    createUser(name: String!, email: String!, phone: String): User!
+    updateUserById(id: Int!, name: String!, email: String!, phone: String!): User,
+    deleteUserById(id: Int!): String
   }
 `);
 
@@ -59,12 +60,10 @@ const root = {
   // Here is the resolver function for hello query
   hello: () => {
     // Here you can execute db queries, rest api calls, etc
-    return 'Hello World';
+    return "Hello World";
   },
   // Here is the resolver function for age query
-  age: () => {
-    
-  },
+  age: () => {},
   // Here is the resolver function for quoteOfTheDay query
   quoteOfTheDay: () => {
     return Math.random() < 0.5 ? "Take it easy" : "Be Happy";
@@ -109,7 +108,8 @@ const root = {
 
     return users;
   },
-  createUser: ({name, email, phone}) => { //destruturing object
+  createUser: ({ name, email, phone }) => {
+    //destruturing object
     console.log(name);
     console.log(email);
     console.log(phone);
@@ -118,10 +118,24 @@ const root = {
       id: 9999,
       name, // when the property and the value names same -- I can use this
       email,
-      phone
+      phone,
     };
     return newUser;
-  }
+  },
+  updateUserById: ({ id, name, phone, email }) => {
+    console.log(id);
+    const updatedUser = {
+      id,
+      name,
+      email,
+      phone,
+    };
+    return updatedUser;
+  },
+  deleteUserById: ({ id }) => {
+    console.log(id);
+    return "Deleted Successfully!";
+  },
 };
 
 // the only api endpoint front end should hit is /graphql

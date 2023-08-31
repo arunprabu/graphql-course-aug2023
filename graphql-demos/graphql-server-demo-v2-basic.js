@@ -1,7 +1,6 @@
+// Approach #1: Using buildSchema method from graphql package
 // Let's learn about building schema for Graphql server
 // along with setting up graphiql client tool to test our graphql server
-
-// Approach #1: Using buildSchema method from graphql package
 
 // We need express to run a server -- npm i express
 const express = require("express");
@@ -92,7 +91,7 @@ const root = {
     ];
 
     return users;
-  }
+  },
 };
 
 // the only api endpoint front end should hit is /graphql

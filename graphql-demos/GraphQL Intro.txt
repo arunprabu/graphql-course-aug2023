@@ -177,7 +177,7 @@ Schema
         }
       }
 
-  5. Input Types 
+  5. Input Types [PENDING]
       * Instead of passing many arguments in the above one, 
         we can make a custom type called input type for it 
       * it will be cleaner and optimized
@@ -185,7 +185,7 @@ Schema
       Examples: 
       ------
         type Mutation {
-          addAuthor(AuthorInput): Author
+          addAuthor(author: AuthorInput): Author
         }
 
         input AuthorInput{ // this must be defined with Input suffix -- otherwise it will be confusing with custom type
