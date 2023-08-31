@@ -63,7 +63,9 @@ const root = {
     return "Hello World";
   },
   // Here is the resolver function for age query
-  age: () => {},
+  age: () => {
+    return 20;
+  },
   // Here is the resolver function for quoteOfTheDay query
   quoteOfTheDay: () => {
     return Math.random() < 0.5 ? "Take it easy" : "Be Happy";
