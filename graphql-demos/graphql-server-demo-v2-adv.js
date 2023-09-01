@@ -21,7 +21,7 @@ const schema = buildSchema(`
 
   type User{
     id: Int,
-    name: String!,
+    name: String,
     phone: String,
     email: String
   }
@@ -36,21 +36,28 @@ const schema = buildSchema(`
     userList: [User]!
   }
 
+  input UserInput {
+    name: String, 
+    email: String, 
+    phone: String
+  }
+
   type Mutation {
-    createUser(name: String!, email: String!, phone: String): User!
+    createUser(input: UserInput): User!
     updateUserById(id: Int!, name: String!, email: String!, phone: String!): User,
     deleteUserById(id: Int!): String
   }
 `);
 
-/* For mutation, the query should be like the following */
+
+/* IMPORTANT: For mutation, the query should be like the following */
 /* 
 mutation{
-  createUser(name: "Kevin", email: "k@l.com", phone: "32435467898") {
+  createUser(input: { name: "Arun", email: "a@b.com", phone: "324567"}){
     id
     name
-    phone
-    email
+    email 
+    phone 
   }
 }
 */
@@ -110,17 +117,18 @@ const root = {
 
     return users;
   },
-  createUser: ({ name, email, phone }) => {
+  createUser: (args) => {
+    console.log(args.input); // this is how you have to receive input types
     //destruturing object
-    console.log(name);
-    console.log(email);
-    console.log(phone);
+    console.log(args.input.name);
+    console.log(args.input.email);
+    console.log(args.input.phone);
 
     const newUser = {
       id: 9999,
-      name, // when the property and the value names same -- I can use this
-      email,
-      phone,
+      name: args.input.name, // when the property and the value names same -- I can use this
+      email: args.input.email,
+      phone: args.input.phone
     };
     return newUser;
   },

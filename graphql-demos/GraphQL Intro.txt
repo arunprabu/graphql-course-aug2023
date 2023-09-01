@@ -140,7 +140,7 @@ Schema
         }
       }
 
-  4. Mutation Types 
+  4. Mutation Types [DONE]
     * For CREATE, UPDATE, DELETE Operations in GraphQL
 
     Examples: 
