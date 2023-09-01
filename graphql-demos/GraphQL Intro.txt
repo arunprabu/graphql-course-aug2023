@@ -177,7 +177,7 @@ Schema
         }
       }
 
-  5. Input Types [PENDING]
+  5. Input Types [DONE]
       * Instead of passing many arguments in the above one, 
         we can make a custom type called input type for it 
       * it will be cleaner and optimized
