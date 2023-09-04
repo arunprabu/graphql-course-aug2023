@@ -1,0 +1,24 @@
+Course Plan 
+------
+  Connecting to another REST API [DONE]
+  Connecting to database (mongodb)  [DONE]
+  Mutation 
+  Documentation 
+  Debugging -- Server App
+  Aliases [DONE]
+  Fragments (Todo)
+  
+  Handling Errors 
+
+  Client Project
+  -----
+    React Project 
+    Connect to Graphql server and getting the data 
+
+    Caching
+
+    Pagination 
+    Subscription 
+
+  -----
+  TypeScript based project 

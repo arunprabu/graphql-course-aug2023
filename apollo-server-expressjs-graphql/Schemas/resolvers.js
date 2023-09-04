@@ -1,4 +1,6 @@
 import axios from "axios"; // npm i axios
+ // Connecting to mongoDb and specific collection (table)
+// import Users from '../models/users.model.js';
 
 export const resolvers = {
   Query: {
@@ -11,5 +13,13 @@ export const resolvers = {
       console.log(result.data);
       return result.data;
     },
+    users: async () => {
+      // // exec db query as per mongoose syntax 
+      // const result = await Users.find();
+      // console.log("========FOUND USERS =========");
+      // console.log(result);
+      // // get the data and return 
+      // return result;
+    }
   },
 };
