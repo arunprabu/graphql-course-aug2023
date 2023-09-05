@@ -4,11 +4,11 @@ Course Plan
   Connecting to database (mongodb)  [DONE]
   Documentation [DONE]
   Mutation [DONE]
-  Debugging -- Server App
   Aliases [DONE]
   Fragments (Todo)
   Authentication
 
+  Debugging -- Server App [DONE]
   Handling Errors 
 
   Client Project
