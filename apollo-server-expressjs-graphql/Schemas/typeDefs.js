@@ -8,7 +8,7 @@ export const typeDefs = `#graphql
     age: Int!
     posts: [Post]!
     postById(id: Int): Post
-    users: [User]
+    users(limit: Int, cursor: String): [User]
   }
 
   """
@@ -24,7 +24,7 @@ export const typeDefs = `#graphql
   }
 
   type User {
-    id: ID!
+    _id: ID!
     name: String 
     email: String 
     phone: String

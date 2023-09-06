@@ -1,7 +1,7 @@
 import axios from "axios"; // npm i axios
 import { GraphQLError } from "graphql";
- // Connecting to mongoDb and specific collection (table)
-import Users from '../models/users.model.js';
+// Connecting to mongoDb and specific collection (table)
+import Users from "../models/users.model.js";
 
 export const resolvers = {
   Query: {
@@ -41,11 +41,17 @@ export const resolvers = {
         });
       }
     },
-    users: async () => {
+    users: async (_, { limit, cursor }) => {
+      console.log(limit);
+      console.log(cursor);
       // exec db query as per mongoose syntax
-      const result = await Users.find();
-      console.log("========FOUND USERS =========");
-      console.log(result);
+      const dbQuery = cursor ? { _id: { $gt: cursor } } : {};
+      const result = await Users.find(dbQuery)
+        .sort({ _id: 1 })
+        .limit(limit)
+        .exec();
+      // console.log("========FOUND USERS =========");
+      // console.log(result);
       // get the data and return
       return result;
     },
