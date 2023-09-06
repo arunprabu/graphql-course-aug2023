@@ -6,17 +6,18 @@ Course Plan
   Mutation [DONE]
   Aliases [DONE]
   Fragments (Todo)
-  Authentication
 
   Debugging -- Server App [DONE]
-  Handling Errors 
+  Handling Errors [DONE]
+
+  Server project with separate typeDefs file 
 
   Client Project
   -----
-    React Project 
-    Connect to Graphql server and getting the data 
-    Authentication
-
+    React Project  [DONE]
+    Connect to Graphql server and getting the data [DONE]
+    Add post from a form component 
+    
     Caching
 
     Pagination 
@@ -24,3 +25,27 @@ Course Plan
 
   -----
   TypeScript based project 
+  Authentication (Demo on the last day)
+
+
+
+Pagination
+=======
+  Types 
+
+  1. Offset Pagination
+      Disadv 
+      ---
+        after first set of result is loaded if new item is added in db, 
+        offset will show previous displayed result also 
+
+
+  2. Cursor Pagination
+      Cursor pagination is a common technique to paginate data in GraphQL APIs.
+      It involves using a "cursor" value to indicate the position in the dataset, 
+      which the client can pass to the server to fetch the next page of results.
+
+
+    
+
+

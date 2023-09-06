@@ -1,5 +1,5 @@
 {
-  "url": "mongodb://localhost:27017/graphqlDemoDb",
+  "url": "mongodb://localhost:27017/graphqlUsersDb",
   "username": "",
   "password": "",
   "options": {}
