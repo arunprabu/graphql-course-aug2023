@@ -2,6 +2,23 @@ import axios from "axios"; // npm i axios
 import { GraphQLError } from "graphql";
 // Connecting to mongoDb and specific collection (table)
 import Users from "../models/users.model.js";
+import { PubSub } from "graphql-subscriptions";
+
+const pubSub = new PubSub();
+
+function startReportGeneration(name) {
+  console.log(name);
+  setTimeout( () => {
+    console.log('WILL PUBLISH ONCE REPORT READY');
+    pubSub.publish("REPORT_GENERATED", {
+      reportGenerated: {
+        id: Math.floor(Math.random() * 10000).toString(),
+        name: name,
+        createdOn: new Date().toString(),
+      }
+    });
+  }, 5000);
+}
 
 export const resolvers = {
   Query: {
@@ -75,5 +92,19 @@ export const resolvers = {
       // console.log(result.data);
       return result.data;
     },
+    generateReport: async(_, { name }) => {
+      console.log(name);
+      startReportGeneration(name);
+
+      return `Your report for ${name} is getting generated. Please wait... We will update you once it is ready!`;
+    },
+  },
+  Subscription: {
+    reportGenerated: {
+      subscribe: () => {
+        // async iterator
+        return pubSub.asyncIterator(["REPORT_GENERATED"]);
+      }
+    }
   },
 };
